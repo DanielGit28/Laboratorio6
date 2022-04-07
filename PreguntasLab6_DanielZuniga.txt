@@ -1,0 +1,31 @@
+Universidad Cenfotec
+Componentes
+Laboratorio 6 
+Daniel Zúñiga Rojas
+
+a. Cuál es la diferencia en la práctica entre @Controller y @RestController?
+@Controller es una anotación básica para identificar los controladores y es una especialización sencilla de la clase @Component y permite auto-detectar implementaciones de las clases por escaneo de las rutas. Se combina con @RequestMapping para manejar peticiones.
+@RequestController es básicamente una versión mejorada que combina @Controller y @ResponseBody. De esta forma simplifica la implementación de controller para eliminar la necesidad de incluir @ResponseBody ya que se implementa automáticamente. 
+
+b. Cuál es mejor usar en qué casos?
+@Controller crea un mapa del modelo de objeto y busca una vista, @RestController retorna el objeto con su información escrita directamente en una respuesta HTTP como JSON o XML. El rest se debe usar con RESTful services donde se requiera de JSON y XML para manejar la información y @Controller para los demás.
+
+c. Por qué en el findAll no se especifica el URI para la operación?
+Porque toma la ruta base definida en el inicio del controlador ya que no se le especifica una en específico. Al no especificar toma la ruta base establecida. Si no se define una ruta base, esta daría error. 
+
+d. Qué obtiene si trata de borrar 2 veces un recurso?
+En mi caso, se obtiene una respuesta vacía. 
+
+e. Comente la anotación de PutMapping del método que hace el update. Reinicie la aplicación.
+Observe que pasa si lo trata de hacer.
+Si el put desde postman, tira el siguiente error: "timestamp": "2022-04-06T03:25:28.066+00:00",
+    "status": 405,
+    "error": "Method Not Allowed",
+    "path": "/contacts/2"
+Lo que significa que sin establecer el put, no lo permite. 
+
+f. Rehabilite la anotación en PutMapping. Pero ahora cambie el URL de POSTMAN para que apunte
+directamente a la colección /contacts. ¿Qué error recibe?
+
+Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+
